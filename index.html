@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Boat Animation</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+      overflow: hidden;
+      perspective: 1200px; /* Enables 3D depth */
+    }
+
+    .scene {
+      width: 300px;
+      height: 200px;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: spin 8s linear infinite;
+    }
+
+    .scene img {
+      position: absolute;
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      backface-visibility: hidden; /* Hide backside */
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    /* Front image */
+    .front {
+      transform: rotateY(0deg) translateZ(150px);
+    }
+
+    /* Back image (mirrored) */
+    .back {
+      transform: rotateY(180deg) translateZ(150px);
+    }
+
+    /* Left side */
+    .left {
+      transform: rotateY(-90deg) translateZ(150px);
+    }
+
+    /* Right side */
+    .right {
+      transform: rotateY(90deg) translateZ(150px);
+    }
+
+    @keyframes spin {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <img src="image1.jpg" alt="Boat" class="front">
+    <img src="image2.jpg" alt="Boat" class="back">
+    <img src="image3.jpg" alt="Boat" class="left">
+    <img src="image4.jpg" alt="Boat" class="right">
+  </div>
+</body>
+</html>
